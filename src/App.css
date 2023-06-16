@@ -36,3 +36,15 @@
     transform: rotate(360deg);
   }
 }
+
+.swiper-pagination-bullet-active {
+  background-color: #141334 !important;
+}
+
+.swiper-button-prev {
+  color: #141334 !important;
+}
+
+.swiper-button-next {
+  color: #141334 !important;
+}
