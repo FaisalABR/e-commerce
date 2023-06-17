@@ -5,6 +5,11 @@ import { Link, useParams } from "react-router-dom";
 
 const asideNav = [
   {
+    id: 5,
+    display: "All Products",
+    path: "products",
+  },
+  {
     id: 1,
     display: "Woman",
     path: "woman",
@@ -36,7 +41,13 @@ const Aside = () => {
   return (
     <aside className="w-3/12 border-[1px] rounded-md border-my-grey shadow-md px-5 py-2 h-fit">
       {asideNav.map((item, i) => (
-        <Link to={`/products/${item.path}`}>
+        <Link
+          to={`${
+            item.display === "All Products"
+              ? "/products"
+              : `/products/${item.path}`
+          }`}
+        >
           <div
             key={item.id}
             className={`${

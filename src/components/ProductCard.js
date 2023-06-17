@@ -5,7 +5,7 @@ import { BsCartPlusFill } from "react-icons/bs";
 
 import { Link } from "react-router-dom";
 
-const ProductCard = () => {
+const ProductCard = ({ data }) => {
   return (
     <div>
       {/* Pathnya akan dynamic */}
@@ -14,8 +14,8 @@ const ProductCard = () => {
       </Link>
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="font-bold text-sm">Autumn Address</h1>
-          <p className="text-xs mt-2">Rp200.000</p>
+          <h1 className="font-bold text-sm">{data.name}</h1>
+          <p className="text-xs mt-2">Rp{data.price}</p>
         </div>
         <div className="w-[45px] h-[45px] bg-my-navy rounded-md cursor-pointer flex justify-center items-center">
           <IconContext.Provider
