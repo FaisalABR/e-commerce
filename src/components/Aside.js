@@ -11,13 +11,13 @@ const asideNav = [
   },
   {
     id: 1,
-    display: "Woman",
-    path: "woman",
+    display: "Women",
+    path: "women",
   },
   {
     id: 2,
-    display: "Man",
-    path: "man",
+    display: "Men",
+    path: "men",
   },
   {
     id: 3,
@@ -34,8 +34,6 @@ const asideNav = [
 const Aside = () => {
   const { category } = useParams();
 
-  console.log(category);
-
   const active = asideNav.findIndex((e) => e.path === category);
 
   return (
@@ -49,7 +47,6 @@ const Aside = () => {
           }`}
         >
           <div
-            key={item.id}
             className={`${
               active === i ? "bg-my-grey" : ""
             } flex items-center justify-between cursor-pointer  px-2 py-2 rounded-md my-3 `}

@@ -14,8 +14,16 @@ import {
 import { IconContext } from "react-icons";
 
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { Swiper, SwiperSlide } from "swiper/react";
+
+import "swiper/css";
+
+import { Mousewheel, Keyboard } from "swiper";
 
 const LandingPage = () => {
+  const products = useSelector((state) => state.products);
+
   return (
     <MainLayout>
       <div className="my-[80px] w-full px-20">
@@ -163,11 +171,22 @@ const LandingPage = () => {
         <section className="my-5">
           <h1 className="text-3xl font-bold my-8">Featured Products</h1>
 
-          <div className="w-full grid grid-cols-3 gap-10">
-            {/* Features products item */}
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
+          <div className="w-full ">
+            <Swiper
+              spaceBetween={100}
+              slidesPerView={3}
+              mousewheel={true}
+              keyboard={true}
+              modules={[Mousewheel, Keyboard]}
+              className="mySwiper"
+            >
+              {/* Features products item */}
+              {products.map((item, i) => (
+                <SwiperSlide>
+                  <ProductCard key={i} data={item} />
+                </SwiperSlide>
+              ))}
+            </Swiper>
           </div>
         </section>
         {/* Newsletter */}

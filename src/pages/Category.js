@@ -15,7 +15,6 @@ const Category = () => {
   const products = useSelector((state) =>
     state.products.filter((item) => item.category.includes(category))
   );
-  console.log(products);
 
   return (
     <MainLayout>
