@@ -5,9 +5,13 @@ import { RiShoppingCartLine } from "react-icons/ri";
 
 import { Link } from "react-router-dom";
 
+import { useSelector } from "react-redux";
+
 const Header = () => {
   const headerRef = useRef();
   const [bgActive, setBgActive] = useState(false);
+
+  const carts = useSelector((state) => state.carts);
 
   useEffect(() => {
     const shrinkHeader = () => {
@@ -27,6 +31,8 @@ const Header = () => {
       window.removeEventListener("scroll", shrinkHeader);
     };
   });
+
+  const productAmount = carts.length;
 
   return (
     <nav
@@ -59,7 +65,15 @@ const Header = () => {
         />
         <div className="flex gap-5 items-center">
           <GoPerson />
-          <RiShoppingCartLine />
+          <div className="relative cursor-pointer">
+            <RiShoppingCartLine />
+            {/* badge */}
+            {productAmount > 0 && (
+              <span className="absolute bottom-2 left-2 w-[22px] h-[22px] bg-red-500 text-white rounded-full text-xs font-semibold flex items-center justify-center">
+                {productAmount}
+              </span>
+            )}
+          </div>
         </div>
       </div>
     </nav>

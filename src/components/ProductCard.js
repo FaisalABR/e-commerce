@@ -8,6 +8,13 @@ import { useParams } from "react-router-dom";
 
 const ProductCard = ({ data }) => {
   const { category } = useParams();
+
+  let IDR = new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "IDR",
+    maximumSignificantDigits: 3,
+  });
+
   return (
     <div>
       {/* Pathnya akan dynamic */}
@@ -17,7 +24,7 @@ const ProductCard = ({ data }) => {
       <div className="flex items-center justify-between">
         <div>
           <h1 className="font-bold text-sm">{data?.name}</h1>
-          <p className="text-xs mt-2">Rp{data?.price}</p>
+          <p className="text-xs mt-2">{IDR.format(data?.price)}</p>
         </div>
         <div className="w-[45px] h-[45px] bg-my-navy rounded-md cursor-pointer flex justify-center items-center">
           <IconContext.Provider
