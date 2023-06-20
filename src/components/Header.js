@@ -66,7 +66,9 @@ const Header = () => {
         <div className="flex gap-5 items-center">
           <GoPerson />
           <div className="relative cursor-pointer">
-            <RiShoppingCartLine />
+            <Link to="/cart">
+              <RiShoppingCartLine />
+            </Link>
             {/* badge */}
             {productAmount > 0 && (
               <span className="absolute bottom-2 left-2 w-[22px] h-[22px] bg-red-500 text-white rounded-full text-xs font-semibold flex items-center justify-center">
