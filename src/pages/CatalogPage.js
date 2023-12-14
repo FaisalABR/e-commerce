@@ -17,7 +17,7 @@ const Catalog = () => {
       <div className="my-[80px] px-20">
         {/* Breadcrumbs */}
         <Breadcrumbs />
-        <div className="w-full flex ">
+        <div className="w-full h-max flex ">
           {/* aside */}
           <Aside />
           {/* Products */}

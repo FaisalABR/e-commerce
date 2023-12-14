@@ -1,14 +1,6 @@
 import { createSlice, nanoid } from "@reduxjs/toolkit";
 
-const initialState = [
-  {
-    cartId: 1,
-    productId: 1,
-    name: "Women's casual Shirt",
-    productAmount: 3,
-    price: 20000,
-  },
-];
+const initialState = [];
 
 const cartSlice = createSlice({
   name: "carts",
@@ -18,7 +10,7 @@ const cartSlice = createSlice({
       reducer(state, action) {
         state.push(action.payload);
       },
-      prepare(name, productId, productAmount, price) {
+      prepare(name, productId, productAmount, price, color, size) {
         return {
           payload: {
             id: nanoid(),
@@ -26,13 +18,58 @@ const cartSlice = createSlice({
             name,
             productAmount,
             price,
+            color,
+            size,
+            isChecked: false,
           },
         };
       },
     },
+    decrementAmount(state, action) {
+      const { id } = action.payload;
+      const existingCart = state.find((item) => item.id === id);
+      if (existingCart) {
+        existingCart.productAmount -= 1;
+      }
+    },
+    incrementAmount(state, action) {
+      const { id } = action.payload;
+      const existingCart = state.find((item) => item.id === id);
+      if (existingCart) {
+        existingCart.productAmount += 1;
+      }
+    },
+    deleteCartList(state, action) {
+      const { id } = action.payload;
+      console.log(id);
+      const existingCart = state.find((item) => item.id === id);
+      if (existingCart) {
+        state.splice(
+          state.findIndex((item) => item.id === id),
+          1
+        );
+      }
+    },
+    handleCheckList(state, action) {
+      const { id } = action.payload;
+      const existingCart = state.find((item) => item.id === id);
+      if (existingCart) {
+        if (existingCart.isChecked === true) {
+          existingCart.isChecked = false;
+        } else {
+          existingCart.isChecked = true;
+        }
+      }
+    },
   },
 });
 
-export const { cartAdded } = cartSlice.actions;
+export const {
+  cartAdded,
+  decrementAmount,
+  incrementAmount,
+  deleteCartList,
+  handleCheckList,
+} = cartSlice.actions;
 
 export default cartSlice.reducer;

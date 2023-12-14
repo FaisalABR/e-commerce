@@ -19,12 +19,9 @@ const Category = () => {
   return (
     <MainLayout>
       <div className="my-[80px] px-20">
-        {/* Breadcrumbs */}
         <Breadcrumbs />
         <div className="w-full  flex justify-between">
-          {/* aside */}
           <Aside />
-          {/* Products */}
           <section className="w-9/12  overflow-scroll-y grid grid-cols-3 gap-10 px-4">
             {products.map((item) => (
               <ProductCard data={item} />

@@ -37,26 +37,28 @@ const Aside = () => {
   const active = asideNav.findIndex((e) => e.path === category);
 
   return (
-    <aside className="w-3/12 border-[1px] rounded-md border-my-grey shadow-md px-5 py-2 h-fit">
-      {asideNav.map((item, i) => (
-        <Link
-          to={`${
-            item.display === "All Products"
-              ? "/products"
-              : `/products/${item.path}`
-          }`}
-        >
-          <div
-            className={`${
-              active === i ? "bg-my-grey" : ""
-            } flex items-center justify-between cursor-pointer  px-2 py-2 rounded-md my-3 `}
+    <div className="w-3/12 h-[1200px]">
+      <aside className="w-full border-[1px] rounded-md border-my-grey shadow-md px-5 py-2 h-fit sticky top-20">
+        {asideNav.map((item, i) => (
+          <Link
+            to={`${
+              item.display === "All Products"
+                ? "/products"
+                : `/products/${item.path}`
+            }`}
           >
-            <h1 className="font-semibold text-md">{item.display}</h1>
-            <IoIosArrowForward />
-          </div>
-        </Link>
-      ))}
-    </aside>
+            <div
+              className={`${
+                active === i ? "bg-my-grey" : ""
+              } flex items-center justify-between cursor-pointer  px-2 py-2 rounded-md my-3 `}
+            >
+              <h1 className="font-semibold text-md">{item.display}</h1>
+              <IoIosArrowForward />
+            </div>
+          </Link>
+        ))}
+      </aside>
+    </div>
   );
 };
 

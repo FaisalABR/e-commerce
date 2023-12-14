@@ -3,13 +3,17 @@ import React, { useEffect, useRef, useState } from "react";
 import { GoPerson } from "react-icons/go";
 import { RiShoppingCartLine } from "react-icons/ri";
 
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 import { useSelector } from "react-redux";
 
 const Header = () => {
-  const headerRef = useRef();
   const [bgActive, setBgActive] = useState(false);
+  const [query, setQuery] = useState("");
+
+  const { pathname } = useLocation();
+
+  const headerRef = useRef();
 
   const carts = useSelector((state) => state.carts);
 
@@ -32,6 +36,14 @@ const Header = () => {
     };
   });
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  const onQueryHandleChange = (e) => {
+    setQuery(e.target.value);
+  };
+
   const productAmount = carts.length;
 
   return (
@@ -47,13 +59,13 @@ const Header = () => {
       <div>
         <ul className="flex gap-8 font-medium">
           <li className=" transition-all cursor-pointer hover:text-indigo-800">
-            Shop
+            Service
           </li>
           <li className=" transition-all cursor-pointer hover:text-indigo-300">
-            Shop
+            Currated
           </li>
           <li className=" transition-all cursor-pointer hover:text-indigo-300">
-            Shop
+            Feautred
           </li>
         </ul>
       </div>
@@ -62,6 +74,8 @@ const Header = () => {
           type="text"
           className="h-[25px] bg-[#F2F3F7] focus:outline-none rounded-md p-4 "
           placeholder="search your items.."
+          value={query}
+          onChange={onQueryHandleChange}
         />
         <div className="flex gap-5 items-center">
           <GoPerson />

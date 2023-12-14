@@ -2,11 +2,12 @@ import React from "react";
 
 import MainLayout from "../main-layout/MainLayout";
 
-import CartCard from "../components/CartCard";
+import NoItem from "../components/NoItem";
+import CartList from "../components/CartList";
+import Breadcrumbs from "../components/Breadcrumbs";
+import FormPayment from "../components/FormPayment";
 
 import { useSelector } from "react-redux";
-
-import Breadcrumbs from "../components/Breadcrumbs";
 
 const CartPage = () => {
   const orderedItems = useSelector((state) => state.carts);
@@ -15,9 +16,14 @@ const CartPage = () => {
     <MainLayout>
       <div className="px-20 my-[80px] w-full">
         <Breadcrumbs />
-        {orderedItems.map((item) => (
-          <CartCard key={item.cartId} data={item} />
-        ))}
+        <div className="w-full flex justify-evenly items-start">
+          {orderedItems.length !== 0 ? (
+            <CartList orderedItems={orderedItems} />
+          ) : (
+            <NoItem />
+          )}
+          <FormPayment orderedItems={orderedItems} />
+        </div>
       </div>
     </MainLayout>
   );

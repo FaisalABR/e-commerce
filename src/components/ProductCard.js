@@ -6,14 +6,10 @@ import { BsCartPlusFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 
+import { IDR } from "../utils/data";
+
 const ProductCard = ({ data }) => {
   const { category } = useParams();
-
-  let IDR = new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: "IDR",
-    maximumSignificantDigits: 3,
-  });
 
   return (
     <div>

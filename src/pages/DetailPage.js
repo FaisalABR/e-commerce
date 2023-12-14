@@ -17,11 +17,12 @@ import "swiper/css";
 import { Mousewheel, Keyboard } from "swiper";
 
 import { cartAdded } from "../utils/reducer/cartSlice";
+import { IDR } from "../utils/data";
 
 const DetailPage = () => {
   const { productId } = useParams();
-  const [isSelectSize, setIsSelectSize] = useState(0);
-  const [isSelectColor, setIsSelectColor] = useState(0);
+  const [isSelectSize, setIsSelectSize] = useState(1);
+  const [isSelectColor, setIsSelectColor] = useState(1);
   const [amount, setAmount] = useState(1);
 
   const dispatch = useDispatch();
@@ -37,29 +38,36 @@ const DetailPage = () => {
     state.products.filter((item) => item.category.includes(product.category[0]))
   );
 
+  const size = product.size.find((item) => item.id === isSelectSize);
+  const color = product.color.find((item) => item.id === isSelectColor);
+
   const handleIncClick = () => {
     setAmount(amount + 1);
   };
+
   const handleDecClick = () => {
     setAmount(amount - 1);
+  };
+
+  const handleAddToCart = () => {
+    dispatch(
+      cartAdded(
+        product.name,
+        product.id,
+        amount,
+        product.price,
+        size.size,
+        color.color
+      )
+    );
   };
 
   const muteDecrement = amount === 1;
   const muteIncrement = amount === product.stocks;
 
-  let IDR = new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: "IDR",
-    maximumSignificantDigits: 3,
-  });
-
-  const handleAddToCart = () => {
-    dispatch(cartAdded(product.name, product.id, amount, product.price));
-  };
-
   return (
     <MainLayout>
-      <div className="my-[80px] px-20">
+      <div className="my-[80px]  px-20">
         <Breadcrumbs />
 
         <section className="w-full flex  gap-10">
