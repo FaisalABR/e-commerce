@@ -21,6 +21,7 @@ const cartSlice = createSlice({
             color,
             size,
             isChecked: false,
+            isPaid: false,
           },
         };
       },
@@ -61,6 +62,15 @@ const cartSlice = createSlice({
         }
       }
     },
+    handlePaidList(state, action) {
+      const { id } = action.payload;
+      const existingCart = state.find((item) => item.id === id);
+      if (existingCart) {
+        if (existingCart.paid === false) {
+          existingCart.paid = true;
+        }
+      }
+    },
   },
 });
 
@@ -70,6 +80,7 @@ export const {
   incrementAmount,
   deleteCartList,
   handleCheckList,
+  handlePaidList,
 } = cartSlice.actions;
 
 export default cartSlice.reducer;

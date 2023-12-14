@@ -37,7 +37,7 @@ const CartCard = ({ data }) => {
 
   console.log(data.id);
   return (
-    <div className="border-2 px-7 py-3 flex items-center justify-between rounded-md shadow-md w-8/12 my-5">
+    <div className="w-full border-2 px-7 py-3 flex items-center justify-between rounded-md shadow-md  my-5">
       {/* item ordered information */}
       <div className="flex items-center">
         <input
@@ -49,10 +49,19 @@ const CartCard = ({ data }) => {
         />
         <div className="w-[70px] h-[70px] rounded-md bg-cyan-300"></div>
         <div className="mx-2">
-          <h1 className="font-bold text-lg">{data.name}</h1>
+          <p className="font-bold text-lg">{data.name}</p>
           <p className="text-sm">
             {IDR.format(data.price * data.productAmount)}
           </p>
+          {data.isPaid ? (
+            <div className="my-2 px-2 py-1 rounded-md text-green-400 border-2 border-green-400">
+              <p>On Delivery</p>
+            </div>
+          ) : (
+            <div className="my-2 px-2 py-1 rounded-md text-yellow-400 border-2 border-yellow-400">
+              <p>Waiting Payment</p>
+            </div>
+          )}
         </div>
       </div>
       {/* action button */}
