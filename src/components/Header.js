@@ -7,7 +7,7 @@ import { Link, useLocation } from "react-router-dom";
 
 import { useSelector } from "react-redux";
 
-const Header = () => {
+const Header = ({ scrollToService, scrollToCurrated, scrollToFeature }) => {
   const [bgActive, setBgActive] = useState(false);
   const [query, setQuery] = useState("");
 
@@ -58,13 +58,22 @@ const Header = () => {
       </div>
       <div>
         <ul className="flex gap-8 font-medium">
-          <li className=" transition-all cursor-pointer hover:text-indigo-800">
+          <li
+            className=" transition-all cursor-pointer hover:text-indigo-800"
+            onClick={scrollToService}
+          >
             Service
           </li>
-          <li className=" transition-all cursor-pointer hover:text-indigo-300">
+          <li
+            className=" transition-all cursor-pointer hover:text-indigo-300"
+            onClick={scrollToCurrated}
+          >
             Currated
           </li>
-          <li className=" transition-all cursor-pointer hover:text-indigo-300">
+          <li
+            className=" transition-all cursor-pointer hover:text-indigo-300"
+            onClick={scrollToFeature}
+          >
             Feautred
           </li>
         </ul>

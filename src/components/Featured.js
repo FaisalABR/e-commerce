@@ -1,4 +1,4 @@
-import React from "react";
+import React, { forwardRef } from "react";
 import { useSelector } from "react-redux";
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -8,11 +8,11 @@ import "swiper/css";
 
 import { Mousewheel, Keyboard } from "swiper";
 
-const Featured = () => {
+const Featured = forwardRef((props, ref) => {
   const products = useSelector((state) => state.products);
 
   return (
-    <section className="my-5">
+    <section className="my-5" ref={ref}>
       <h1 className="text-3xl font-bold my-8">Featured Products</h1>
       <div className="w-full ">
         <Swiper
@@ -33,6 +33,6 @@ const Featured = () => {
       </div>
     </section>
   );
-};
+});
 
 export default Featured;
