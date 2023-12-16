@@ -63,13 +63,9 @@ const cartSlice = createSlice({
       }
     },
     handlePaidList(state, action) {
-      const { id } = action.payload;
-      const existingCart = state.find((item) => item.id === id);
-      if (existingCart) {
-        if (existingCart.paid === false) {
-          existingCart.paid = true;
-        }
-      }
+      const listWillPaid = state.filter((item) => item.isChecked === true);
+      listWillPaid.map((item) => (item.isPaid = true));
+      listWillPaid.map((item) => (item.isChecked = false));
     },
   },
 });

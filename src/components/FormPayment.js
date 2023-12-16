@@ -6,10 +6,12 @@ import { IDR } from "../utils/data";
 import { confirmPayment } from "../utils/reducer/paymentSlice";
 import { handlePaidList } from "../utils/reducer/cartSlice";
 
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 export default function FormPayment({ orderedItems }) {
   const checkedItems = orderedItems.filter((item) => item.isChecked === true);
+  const balanceAmount = useSelector((state) => state.payment.balance);
+  console.log(balanceAmount);
 
   const dispatch = useDispatch();
 
@@ -18,8 +20,12 @@ export default function FormPayment({ orderedItems }) {
   }, 0);
 
   const handlePay = (id) => {
-    dispatch(confirmPayment({ totalPrice }));
-    // dispatch(handlePaidList())
+    if (totalPrice < balanceAmount) {
+      dispatch(confirmPayment({ totalPrice }));
+      dispatch(handlePaidList());
+    } else {
+      alert("Insufficient Balance");
+    }
   };
 
   let isCheckingExist = checkedItems.length === 0;
