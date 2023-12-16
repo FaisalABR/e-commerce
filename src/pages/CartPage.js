@@ -1,22 +1,23 @@
 import React from "react";
 
-import MainLayout from "../main-layout/MainLayout";
-
 import NoItem from "../components/NoItem";
 import CartList from "../components/CartList";
 import Breadcrumbs from "../components/Breadcrumbs";
 import FormPayment from "../components/FormPayment";
 
 import { useSelector } from "react-redux";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 const CartPage = () => {
   const orderedItems = useSelector((state) => state.carts);
 
   return (
-    <MainLayout>
-      <div className="px-20 my-[80px] w-full">
+    <>
+      <Header noNavigation />
+      <div className="md:px-20 lg:px-20 px-5 my-[80px] w-full">
         <Breadcrumbs />
-        <div className="w-full flex justify-evenly items-start">
+        <div className="w-full flex flex-col md:flex-row lg:flex-row justify-evenly items-start">
           {orderedItems.length !== 0 ? (
             <CartList orderedItems={orderedItems} />
           ) : (
@@ -25,7 +26,8 @@ const CartPage = () => {
           <FormPayment orderedItems={orderedItems} />
         </div>
       </div>
-    </MainLayout>
+      <Footer />
+    </>
   );
 };
 

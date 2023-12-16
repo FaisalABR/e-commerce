@@ -13,7 +13,9 @@ const Featured = forwardRef((props, ref) => {
 
   return (
     <section className="my-5" ref={ref}>
-      <h1 className="text-3xl font-bold my-8">Featured Products</h1>
+      <h1 className="lg:text-3xl md:text-2xl text-2xl font-bold my-8">
+        Featured Products
+      </h1>
       <div className="w-full ">
         <Swiper
           spaceBetween={100}

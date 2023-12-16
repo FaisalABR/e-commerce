@@ -37,7 +37,7 @@ const CartCard = ({ data }) => {
 
   console.log(data.id);
   return (
-    <div className="w-full border-2 px-7 py-3 flex items-center justify-between rounded-md shadow-md  my-5">
+    <div className="w-full border-2 md:px-7 lg:px-7 px-2 md:py-3 lg:py-3 py-2 flex items-center justify-between rounded-md shadow-md  my-5">
       {/* item ordered information */}
       <div className="flex items-center">
         <input
@@ -47,18 +47,20 @@ const CartCard = ({ data }) => {
           checked={data.isChecked}
           onChange={() => handleChangeCheck(data.id)}
         />
-        <div className="w-[70px] h-[70px] rounded-md bg-cyan-300"></div>
+        <div className="md:w-[70px] md:h-[70px] lg:w-[70px] lg:h-[70px] w-[50px] h-[50px]  rounded-md bg-cyan-300"></div>
         <div className="mx-2">
-          <p className="font-bold text-lg">{data.name}</p>
-          <p className="text-sm">
+          <p className="font-bold md:text-lg lg:text-lg text-md line-clamp-1">
+            {data.name}
+          </p>
+          <p className="md:text-sm lg:text-sm text-xs">
             {IDR.format(data.price * data.productAmount)}
           </p>
           {data.isPaid ? (
-            <div className="my-2 px-2 py-1 rounded-md text-green-400 border-2 border-green-400">
+            <div className="w-max my-2 md:px-2 lg:px-2 px-1 md:text-md lg:text-md text-xs font-bold py-1 rounded-md text-green-400 border-[1px] border-green-400">
               <p>On Delivery</p>
             </div>
           ) : (
-            <div className="my-2 px-2 py-1 rounded-md text-yellow-400 border-2 border-yellow-400">
+            <div className="w-max my-2 md:px-2 lg:px-2 px-1 lg:text-md text-xs font-bold py-1 rounded-md text-yellow-400 border-[1px] border-yellow-400">
               <p>Waiting Payment</p>
             </div>
           )}
@@ -73,7 +75,7 @@ const CartCard = ({ data }) => {
             }}
             muteDecrement={muteDecrement}
           />
-          <div className="px-3 py-2 border-2 rounded-sm">
+          <div className="md:px-3 md:py-2 lg:px-3 lg:py-2 px-2 py-1 border-2 rounded-sm">
             {data.productAmount}
           </div>
           <ButtonInc

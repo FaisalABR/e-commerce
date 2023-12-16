@@ -20,7 +20,7 @@ const HeroSlide = () => {
       className="mySwiper"
     >
       <SwiperSlide>
-        <div className="h-[80vh] w-full bg-dark-grey flex items-center justify-center rounded-md text-white text-4xl">
+        <div className=" h-[80vh] lg:h-[80vh] md:h-[80vh] w-full bg-dark-grey flex items-center justify-center rounded-md text-white text-4xl ">
           1
         </div>
       </SwiperSlide>

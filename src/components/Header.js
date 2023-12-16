@@ -7,7 +7,12 @@ import { Link, useLocation } from "react-router-dom";
 
 import { useSelector } from "react-redux";
 
-const Header = ({ scrollToService, scrollToCurrated, scrollToFeature }) => {
+const Header = ({
+  scrollToService,
+  scrollToCurrated,
+  scrollToFeature,
+  noNavigation,
+}) => {
   const [bgActive, setBgActive] = useState(false);
   const [query, setQuery] = useState("");
 
@@ -51,37 +56,41 @@ const Header = ({ scrollToService, scrollToCurrated, scrollToFeature }) => {
       ref={headerRef}
       className={`${
         bgActive ? "bg-my-navy py-7 text-white" : "py-8"
-      } fixed top-0 left-0 right-0 h-[30px] flex items-center justify-between  px-20 text-my-navy z-50 transition-all`}
+      } fixed top-0 left-0 right-0 h-[30px] flex items-center justify-between  md:px-20 lg:px-20 px-5 text-my-navy z-50 transition-all`}
     >
       <div className="font-bold text-2xl">
         <Link to="/">DripShop</Link>
       </div>
       <div>
-        <ul className="flex gap-8 font-medium">
-          <li
-            className=" transition-all cursor-pointer hover:text-indigo-800"
-            onClick={scrollToService}
-          >
-            Service
-          </li>
-          <li
-            className=" transition-all cursor-pointer hover:text-indigo-300"
-            onClick={scrollToCurrated}
-          >
-            Currated
-          </li>
-          <li
-            className=" transition-all cursor-pointer hover:text-indigo-300"
-            onClick={scrollToFeature}
-          >
-            Feautred
-          </li>
-        </ul>
+        {noNavigation ? (
+          <></>
+        ) : (
+          <ul className="hidden gap-8 font-medium md:flex lg:flex">
+            <li
+              className=" transition-all cursor-pointer hover:text-indigo-800"
+              onClick={scrollToService}
+            >
+              Service
+            </li>
+            <li
+              className=" transition-all cursor-pointer hover:text-indigo-300"
+              onClick={scrollToCurrated}
+            >
+              Currated
+            </li>
+            <li
+              className=" transition-all cursor-pointer hover:text-indigo-300"
+              onClick={scrollToFeature}
+            >
+              Featured
+            </li>
+          </ul>
+        )}
       </div>
       <div className="flex items-center gap-3">
         <input
           type="text"
-          className="h-[25px] bg-[#F2F3F7] focus:outline-none rounded-md p-4 "
+          className="hidden md:flex lg:flex h-[25px] bg-[#F2F3F7] focus:outline-none rounded-md p-4 "
           placeholder="search your items.."
           value={query}
           onChange={onQueryHandleChange}

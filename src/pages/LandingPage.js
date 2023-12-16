@@ -31,7 +31,7 @@ const LandingPage = () => {
         scrollToCurrated={scrollToCurrated}
         scrollToFeature={scrollToFeature}
       />
-      <div className="my-[80px] w-full px-20">
+      <div className="my-[80px] w-full md:px-20 lg:px-20 px-5">
         <HeroSlide />
         <Service ref={serviceRef} />
         <CurratedList ref={curratedRef} />

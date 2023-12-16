@@ -7,8 +7,10 @@ import { curratedData } from "../utils/data";
 const CurratedList = forwardRef((props, ref) => {
   return (
     <section className="my-10" ref={ref}>
-      <h1 className="text-3xl font-bold">Currated Products</h1>
-      <div className="w-full grid grid-cols-4 gap-10 my-10">
+      <h1 className="lg:text-3xl font-bold md:text-2xl text-2xl">
+        Currated Products
+      </h1>
+      <div className="w-full grid lg:grid-cols-4 md:grid-cols-4 grid-cols-2 lg:gap-10 md:gap-10 gap-5 my-10 ">
         {/* currated items */}
         {curratedData.map((item) => (
           <CurratedItem key={item.id} curracy={item.curracy} path={item.path} />

@@ -38,7 +38,7 @@ const Aside = () => {
 
   return (
     <div className="w-3/12 h-[1200px]">
-      <aside className="w-full border-[1px] rounded-md border-my-grey shadow-md px-5 py-2 h-fit sticky top-20">
+      <aside className="w-full border-[1px] rounded-md border-my-grey shadow-md lg:px-5 md:px-5 px-1 py-2 h-fit sticky top-20">
         {asideNav.map((item, i) => (
           <Link
             to={`${
@@ -50,9 +50,11 @@ const Aside = () => {
             <div
               className={`${
                 active === i ? "bg-my-grey" : ""
-              } flex items-center justify-between cursor-pointer  px-2 py-2 rounded-md my-3 `}
+              } flex items-center justify-between cursor-pointer lg:px-2  md:px-2 px-1 py-2 rounded-md my-3 `}
             >
-              <h1 className="font-semibold text-md">{item.display}</h1>
+              <h1 className="font-semibold lg:text-lg md:text-md text-xs">
+                {item.display}
+              </h1>
               <IoIosArrowForward />
             </div>
           </Link>

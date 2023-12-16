@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 
-import MainLayout from "../main-layout/MainLayout";
-
 import Breadcrumbs from "../components/Breadcrumbs";
 import ProductCard from "../components/ProductCard";
 import ButtonSize from "../components/ButtonSize";
 import ButtonColor from "../components/ButtonColor";
+import Footer from "../components/Footer";
+import Header from "../components/Header";
 
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
@@ -66,26 +66,31 @@ const DetailPage = () => {
   const muteIncrement = amount === product.stocks;
 
   return (
-    <MainLayout>
-      <div className="my-[80px]  px-20">
+    <>
+      <Header noNavigation />
+      <div className="my-[80px] md:px-10 lg:px-20 px-5">
         <Breadcrumbs />
 
-        <section className="w-full flex  gap-10">
+        <section className="w-full flex flex-col md:flex-row lg:flex-row">
           {/* photo products */}
-          <div className="w-6/12 h-[70vh] bg-blue-300"></div>
+          <div className="md:w-6/12 lg:w-6/12 w-11/12 md:h-[70vh] lg:h-[70vh] h-[50vh] bg-blue-300"></div>
           {/* info products */}
-          <div className="w-6/12 h-[80vh] ">
+          <div className="md:w-6/12 lg:w-6/12 w-11/12 h-[80vh] ">
             <div className="mb-6">
-              <h1 className="font-bold text-4xl mb-4">{product?.name}</h1>
-              <p className="font-semibold text-2xl">
+              <h1 className="font-bold lg:text-4xl md:text-4xl texl-3xl mb-4 mt-4 lg:mt-0 md:mt-0">
+                {product?.name}
+              </h1>
+              <p className="font-semibold lg:text-2xl md:text-2xl text-xl">
                 {IDR.format(product?.price)}
               </p>
             </div>
             <hr />
             <div className="w-full flex items-start justify-between my-6">
               {/* size */}
-              <div className="w-6/12">
-                <h1 className="text-lg mb-2">Available Size</h1>
+              <div className="md:w-6/12 lg:w-6/12 w-11/12">
+                <h1 className="md:text-lg lg:text-lg text-md mb-2">
+                  Available Size
+                </h1>
                 <div className="flex gap-3 flex-wrap">
                   {product.size.map((item) => (
                     <ButtonSize
@@ -99,7 +104,9 @@ const DetailPage = () => {
               </div>
               {/* color */}
               <div className="w-6/12">
-                <h1 className="text-lg mb-2">Available Color</h1>
+                <h1 className="md:text-lg lg:text-lg text-md mb-2">
+                  Available Color
+                </h1>
                 <div className="flex gap-3 flex-wrap">
                   {product.color.map((item) => (
                     <ButtonColor
@@ -157,7 +164,9 @@ const DetailPage = () => {
         </section>
 
         <section className="w-full">
-          <h1 className="text-3xl font-bold my-3">Related Products</h1>
+          <h1 className="lg:text-3xl md:text-2xl text-lg font-bold my-3">
+            Related Products
+          </h1>
 
           <div className="w-full mt-10">
             <Swiper
@@ -178,7 +187,8 @@ const DetailPage = () => {
           </div>
         </section>
       </div>
-    </MainLayout>
+      <Footer />
+    </>
   );
 };
 

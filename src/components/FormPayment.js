@@ -24,7 +24,7 @@ export default function FormPayment({ orderedItems }) {
 
   let isCheckingExist = checkedItems.length === 0;
   return (
-    <div className="w-3/12 rounded-md shadow-2xl border-2 px-4 py-2 my-5">
+    <div className="md:w-3/12 lg:w-3/12 w-full  rounded-md shadow-md border-2 px-4 py-2 my-5">
       {isCheckingExist ? (
         <>
           <p className="font-semibold text-dark-grey">
