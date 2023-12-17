@@ -12,9 +12,13 @@ const paymentSlice = createSlice({
         state.balance -= totalPrice;
       }
     },
+    topUp(state, action) {
+      const { amount } = action.payload;
+      state.balance += parseFloat(amount);
+    },
   },
 });
 
-export const { confirmPayment } = paymentSlice.actions;
+export const { confirmPayment, topUp } = paymentSlice.actions;
 
 export default paymentSlice.reducer;

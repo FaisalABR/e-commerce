@@ -40,13 +40,17 @@ const CartCard = ({ data }) => {
     <div className="w-full border-2 md:px-7 lg:px-7 px-2 md:py-3 lg:py-3 py-2 flex items-center justify-between rounded-md shadow-md  my-5">
       {/* item ordered information */}
       <div className="flex items-center">
-        <input
-          type="checkbox"
-          value={data.price}
-          id={data.id}
-          checked={data.isChecked}
-          onChange={() => handleChangeCheck(data.id)}
-        />
+        {data.isPaid !== true ? (
+          <input
+            type="checkbox"
+            value={data.price}
+            id={data.id}
+            checked={data.isChecked}
+            onChange={() => handleChangeCheck(data.id)}
+          />
+        ) : (
+          <></>
+        )}
         <div className="md:w-[70px] md:h-[70px] lg:w-[70px] lg:h-[70px] w-[50px] h-[50px]  rounded-md bg-cyan-300"></div>
         <div className="mx-2">
           <p className="font-bold md:text-lg lg:text-lg text-md line-clamp-1">

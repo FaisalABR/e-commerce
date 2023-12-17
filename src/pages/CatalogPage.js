@@ -6,6 +6,7 @@ import Aside from "../components/Aside";
 import ProductCard from "../components/ProductCard";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
+import { catalogBreadcrumbs } from "../utils/data";
 
 const Catalog = () => {
   const allProducts = useSelector((state) => state.products);
@@ -17,7 +18,10 @@ const Catalog = () => {
       <Header noNavigation={true} />
       <div className="my-[80px] lg:px-20 md:px-10 px-5">
         {/* Breadcrumbs */}
-        <Breadcrumbs />
+        <Breadcrumbs
+          previousPath={catalogBreadcrumbs}
+          activePath={"all products"}
+        />
         <div className="w-full h-max flex ">
           {/* aside */}
           <Aside />

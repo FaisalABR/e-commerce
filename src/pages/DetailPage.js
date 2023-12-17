@@ -6,6 +6,7 @@ import ButtonSize from "../components/ButtonSize";
 import ButtonColor from "../components/ButtonColor";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
+import Notification from "../components/Notification";
 
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
@@ -17,13 +18,14 @@ import "swiper/css";
 import { Mousewheel, Keyboard } from "swiper";
 
 import { cartAdded } from "../utils/reducer/cartSlice";
-import { IDR } from "../utils/data";
+import { IDR, detailBreadcrumbs } from "../utils/data";
 
 const DetailPage = () => {
   const { productId } = useParams();
   const [isSelectSize, setIsSelectSize] = useState(1);
   const [isSelectColor, setIsSelectColor] = useState(1);
   const [amount, setAmount] = useState(1);
+  const [showNotif, setShowNotif] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -60,6 +62,9 @@ const DetailPage = () => {
         color.color
       )
     );
+
+    setShowNotif(true);
+    setTimeout(() => setShowNotif(false), 4000);
   };
 
   const muteDecrement = amount === 1;
@@ -69,11 +74,14 @@ const DetailPage = () => {
     <>
       <Header noNavigation />
       <div className="my-[80px] md:px-10 lg:px-20 px-5">
-        <Breadcrumbs />
+        <Breadcrumbs
+          previousPath={detailBreadcrumbs}
+          activePath={product.name}
+        />
 
         <section className="w-full flex flex-col md:flex-row lg:flex-row">
           {/* photo products */}
-          <div className="md:w-6/12 lg:w-6/12 w-11/12 md:h-[70vh] lg:h-[70vh] h-[50vh] bg-blue-300"></div>
+          <div className="md:w-6/12 lg:w-6/12 w-11/12 md:h-[70vh] lg:h-[70vh] h-[50vh] lg:mr-10 md:mr-8 bg-blue-300"></div>
           {/* info products */}
           <div className="md:w-6/12 lg:w-6/12 w-11/12 h-[80vh] ">
             <div className="mb-6">
@@ -186,6 +194,16 @@ const DetailPage = () => {
             </Swiper>
           </div>
         </section>
+        {showNotif && (
+          <Notification>
+            <p className="text-sm md:text-md lg:text-md text-green-400 font-semibold">
+              Successfully Added to Cart
+            </p>
+            <p className="text-xs md:text-sm lg:text-sm text-green-400">
+              Please check your cart page
+            </p>
+          </Notification>
+        )}
       </div>
       <Footer />
     </>

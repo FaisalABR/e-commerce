@@ -1,7 +1,6 @@
 export let IDR = new Intl.NumberFormat("en-US", {
   style: "currency",
   currency: "IDR",
-  maximumSignificantDigits: 3,
 });
 
 export const curratedData = [
@@ -52,5 +51,42 @@ export const serviceData = [
     title: "Fast and Free Shipping",
     description: "We offer fast and free shipping for our loyal customers",
     icon: "truck",
+  },
+];
+
+export const cartBreadcrumbs = [
+  {
+    id: 1,
+    displayName: "Home",
+    linkNav: "/",
+  },
+];
+
+export const balanceBreadcrumbs = [
+  {
+    id: 1,
+    displayName: "Home",
+    linkNav: "/",
+  },
+];
+
+export const catalogBreadcrumbs = [
+  {
+    id: 1,
+    displayName: "Home",
+    linkNav: "/",
+  },
+];
+
+export const detailBreadcrumbs = [
+  {
+    id: 1,
+    displayName: "Home",
+    linkNav: "/",
+  },
+  {
+    id: 2,
+    displayName: "All Products",
+    linkNav: "/products",
   },
 ];
