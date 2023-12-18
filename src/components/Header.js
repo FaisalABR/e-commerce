@@ -1,6 +1,6 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, memo } from "react";
 
-import { GoPerson } from "react-icons/go";
+import { MdOutlineAttachMoney } from "react-icons/md";
 import { RiShoppingCartLine } from "react-icons/ri";
 
 import { Link, useLocation } from "react-router-dom";
@@ -14,7 +14,6 @@ const Header = ({
   noNavigation,
 }) => {
   const [bgActive, setBgActive] = useState(false);
-  const [query, setQuery] = useState("");
 
   const { pathname } = useLocation();
 
@@ -44,10 +43,6 @@ const Header = ({
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);
-
-  const onQueryHandleChange = (e) => {
-    setQuery(e.target.value);
-  };
 
   const productAmount = carts.length;
 
@@ -88,15 +83,17 @@ const Header = ({
         )}
       </div>
       <div className="flex items-center gap-3">
-        <input
+        {/* <input
           type="text"
           className="hidden md:flex lg:flex h-[25px] bg-[#F2F3F7] focus:outline-none rounded-md p-4 "
           placeholder="search your items.."
           value={query}
           onChange={onQueryHandleChange}
-        />
+        /> */}
         <div className="flex gap-5 items-center">
-          <GoPerson />
+          <Link to="/balance">
+            <MdOutlineAttachMoney />
+          </Link>
           <div className="relative cursor-pointer">
             <Link to="/cart">
               <RiShoppingCartLine />
@@ -114,4 +111,4 @@ const Header = ({
   );
 };
 
-export default Header;
+export default memo(Header);

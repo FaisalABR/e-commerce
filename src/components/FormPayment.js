@@ -8,7 +8,11 @@ import { handlePaidList } from "../utils/reducer/cartSlice";
 
 import { useDispatch, useSelector } from "react-redux";
 
-export default function FormPayment({ orderedItems }) {
+export default function FormPayment({
+  orderedItems,
+  setShowNotif,
+  setShowBadNotif,
+}) {
   const checkedItems = orderedItems.filter((item) => item.isChecked === true);
   const balanceAmount = useSelector((state) => state.payment.balance);
   console.log(balanceAmount);
@@ -19,12 +23,15 @@ export default function FormPayment({ orderedItems }) {
     return acc + item.price * item.productAmount;
   }, 0);
 
-  const handlePay = (id) => {
+  const handlePay = () => {
     if (totalPrice < balanceAmount) {
       dispatch(confirmPayment({ totalPrice }));
       dispatch(handlePaidList());
+      setShowNotif(true);
+      setTimeout(() => setShowNotif(false), 3000);
     } else {
-      alert("Insufficient Balance");
+      setShowBadNotif(true);
+      setTimeout(() => setShowBadNotif(false), 3000);
     }
   };
 
@@ -46,7 +53,7 @@ export default function FormPayment({ orderedItems }) {
         <p className="font-light">{IDR.format(totalPrice)}</p>
       </div>
       <button
-        className="w-full rounded-md bg-my-navy  py-2 text-white text-md font-semibold hover:bg-red-500 transition-all"
+        className="w-full rounded-md cursor-pointer bg-my-navy  py-2 text-white text-md font-semibold hover:bg-red-500 transition-all"
         disabled={isCheckingExist}
         onClick={handlePay}
       >

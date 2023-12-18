@@ -73,20 +73,28 @@ const CartCard = ({ data }) => {
       {/* action button */}
       <div className="flex items-center gap-3">
         <div className="flex items-center">
-          <ButtonDec
-            handleDecClick={() => {
-              decAmount(data.id);
-            }}
-            muteDecrement={muteDecrement}
-          />
+          {data.isPaid !== true ? (
+            <ButtonDec
+              handleDecClick={() => {
+                decAmount(data.id);
+              }}
+              muteDecrement={muteDecrement}
+            />
+          ) : (
+            <></>
+          )}
           <div className="md:px-3 md:py-2 lg:px-3 lg:py-2 px-2 py-1 border-2 rounded-sm">
             {data.productAmount}
           </div>
-          <ButtonInc
-            handleIncClick={() => {
-              incAmount(data.id);
-            }}
-          />
+          {data.isPaid !== true ? (
+            <ButtonInc
+              handleIncClick={() => {
+                incAmount(data.id);
+              }}
+            />
+          ) : (
+            <></>
+          )}
         </div>
         <BsTrash
           className="cursor-pointer"

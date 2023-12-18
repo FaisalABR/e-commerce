@@ -2,7 +2,10 @@ import React from "react";
 
 const Newsletter = () => {
   return (
-    <section className="text-center my-24 w-full flex flex-col items-center">
+    <section
+      data-aos="zoom-in"
+      className="text-center my-24 w-full flex flex-col items-center"
+    >
       <h1 className="font-bold lg:text-2xl md:text-2xl text-xl ">
         Subscribe to our newsletter to get updates <br /> to our latest
         collections

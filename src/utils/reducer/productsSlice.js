@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = [
   {
     id: 1,
-    name: "Casual Shirt",
+    name: "casual shirt",
     status: "need to confirm",
     price: 150000,
     category: ["man", "casual"],
@@ -22,7 +22,7 @@ const initialState = [
   },
   {
     id: 2,
-    name: "Women's Casual Shirt 1",
+    name: "women's casual shirt 1",
     status: "need to confirm",
     price: 120000,
     category: ["women", "casual"],

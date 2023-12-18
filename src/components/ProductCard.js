@@ -12,7 +12,7 @@ const ProductCard = ({ data }) => {
   const { category } = useParams();
 
   return (
-    <div>
+    <div data-aos="fade-up">
       {/* Pathnya akan dynamic */}
       <Link to={`/products/${category}/${data?.id}`}>
         <div className="h-[200px] md:h-[250px] lg:h-[300px] bg-emerald-400 mb-5 rounded-md"></div>

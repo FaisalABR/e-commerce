@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import "./App.css";
 
 import { Routes, Route } from "react-router-dom";
@@ -9,7 +10,13 @@ import DetailPage from "./pages/DetailPage";
 import CartPage from "./pages/CartPage";
 import BalancePage from "./pages/BalancePage";
 
+import AOS from "aos";
+import "aos/dist/aos.css";
+
 function App() {
+  useEffect(() => {
+    AOS.init();
+  }, []);
   return (
     <>
       <Routes>

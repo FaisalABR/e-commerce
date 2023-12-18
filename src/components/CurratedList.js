@@ -6,7 +6,7 @@ import { curratedData } from "../utils/data";
 
 const CurratedList = forwardRef((props, ref) => {
   return (
-    <section className="my-10" ref={ref}>
+    <section data-aos="flip-up" className="my-10" ref={ref}>
       <h1 className="lg:text-3xl font-bold md:text-2xl text-2xl">
         Currated Products
       </h1>

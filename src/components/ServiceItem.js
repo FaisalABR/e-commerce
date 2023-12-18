@@ -24,7 +24,7 @@ const ServiceItem = ({ title, description, icon }) => {
     }
   };
   return (
-    <div className="">
+    <div data-aos="fade-up" className="">
       <div className="w-[90px] h-[90px] rounded-md bg-my-grey my-1 flex justify-center items-center">
         <IconContext.Provider
           value={{
