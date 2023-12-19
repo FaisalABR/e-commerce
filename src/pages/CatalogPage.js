@@ -6,10 +6,12 @@ import Aside from "../components/Aside";
 import ProductCard from "../components/ProductCard";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
+import Notification from "../components/Notification";
 import { catalogBreadcrumbs } from "../utils/data";
 
 const Catalog = () => {
   const [query, setQuery] = useState("");
+  const [showNotif, setShowNotif] = useState(false);
   const onQueryHandleChange = (e) => {
     setQuery(e.target.value);
   };
@@ -44,15 +46,33 @@ const Catalog = () => {
             <section className="w-full  overflow-scroll-y grid lg:grid-cols-3 md:grid-cols-3 grid-cols-2 md:gap-10 lg:gap-10 gap-5">
               {query
                 ? searchProduct.map((item, i) => (
-                    <ProductCard key={i} data={item} />
+                    <ProductCard
+                      key={i}
+                      data={item}
+                      setShowNotif={setShowNotif}
+                    />
                   ))
                 : allProducts.map((item, i) => (
-                    <ProductCard key={i} data={item} />
+                    <ProductCard
+                      key={i}
+                      data={item}
+                      setShowNotif={setShowNotif}
+                    />
                   ))}
             </section>
           </div>
         </div>
       </div>
+      {showNotif && (
+        <Notification>
+          <p className="text-sm md:text-md lg:text-md text-green-400 font-semibold">
+            Successfully Added to Cart
+          </p>
+          <p className="text-xs md:text-sm lg:text-sm text-green-400">
+            Please check your cart page
+          </p>
+        </Notification>
+      )}
       <Footer />
     </>
   );

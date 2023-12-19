@@ -13,7 +13,12 @@ const CurratedList = forwardRef((props, ref) => {
       <div className="w-full grid lg:grid-cols-4 md:grid-cols-4 grid-cols-2 lg:gap-10 md:gap-10 gap-5 my-10 ">
         {/* currated items */}
         {curratedData.map((item) => (
-          <CurratedItem key={item.id} curracy={item.curracy} path={item.path} />
+          <CurratedItem
+            key={item.id}
+            curracy={item.curracy}
+            path={item.path}
+            imageClass={item.imageClass}
+          />
         ))}
       </div>
     </section>

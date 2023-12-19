@@ -59,7 +59,8 @@ const DetailPage = () => {
         amount,
         product.price,
         size.size,
-        color.color
+        color.color,
+        product.imageUrl
       )
     );
 
@@ -69,6 +70,8 @@ const DetailPage = () => {
 
   const muteDecrement = amount === 1;
   const muteIncrement = amount === product.stocks;
+
+  const PF = process.env.REACT_APP_PUBLIC_FOLDER;
 
   return (
     <>
@@ -81,7 +84,11 @@ const DetailPage = () => {
 
         <section className="w-full flex flex-col md:flex-row lg:flex-row">
           {/* photo products */}
-          <div className="md:w-6/12 lg:w-6/12 w-11/12 md:h-[70vh] lg:h-[70vh] h-[50vh] lg:mr-10 md:mr-8 bg-blue-300"></div>
+          <img
+            src={PF + product.imageUrl}
+            alt={product.name}
+            className="object-cover object-center md:w-6/12 lg:w-6/12 w-11/12 md:h-[70vh] lg:h-[70vh] h-[50vh] lg:mr-10 md:mr-8 bg-blue-300"
+          />
           {/* info products */}
           <div className="md:w-6/12 lg:w-6/12 w-11/12 h-[80vh] ">
             <div className="mb-6">
@@ -180,6 +187,17 @@ const DetailPage = () => {
             <Swiper
               spaceBetween={30}
               slidesPerView={4}
+              breakpoints={{
+                320: {
+                  slidesPerView: 1,
+                },
+                768: {
+                  slidesPerView: 2,
+                },
+                1024: {
+                  slidesPerView: 4,
+                },
+              }}
               mousewheel={true}
               keyboard={true}
               modules={[Mousewheel, Keyboard]}
@@ -188,7 +206,11 @@ const DetailPage = () => {
               {/* Features products item */}
               {relatedProducts.map((item, i) => (
                 <SwiperSlide>
-                  <ProductCard key={i} data={item} />
+                  <ProductCard
+                    key={i}
+                    data={item}
+                    setShowNotif={setShowNotif}
+                  />
                 </SwiperSlide>
               ))}
             </Swiper>

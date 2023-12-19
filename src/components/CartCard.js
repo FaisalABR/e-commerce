@@ -34,6 +34,7 @@ const CartCard = ({ data }) => {
     dispatch(handleCheckList({ id }));
   };
   const muteDecrement = data.productAmount === 1;
+  const PF = process.env.REACT_APP_PUBLIC_FOLDER;
 
   console.log(data.id);
   return (
@@ -51,7 +52,11 @@ const CartCard = ({ data }) => {
         ) : (
           <></>
         )}
-        <div className="md:w-[70px] md:h-[70px] lg:w-[70px] lg:h-[70px] w-[50px] h-[50px]  rounded-md bg-cyan-300"></div>
+        <img
+          src={PF + data.imageUrl}
+          alt={data.name}
+          className="md:w-[70px] md:h-[70px] lg:w-[70px] lg:h-[70px] w-[50px] h-[50px] object-cover object-center  rounded-md bg-cyan-300"
+        />
         <div className="mx-2">
           <p className="font-bold md:text-lg lg:text-lg text-md line-clamp-1">
             {data.name}

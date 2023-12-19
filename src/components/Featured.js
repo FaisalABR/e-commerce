@@ -19,8 +19,19 @@ const Featured = forwardRef((props, ref) => {
       <div className="w-full ">
         <Swiper
           spaceBetween={100}
-          slidesPerView={3}
           mousewheel={true}
+          breakpoints={{
+            320: {
+              slidesPerView: 1,
+            },
+            768: {
+              slidesPerView: 2,
+            },
+            1024: {
+              slidesPerView: 4,
+            },
+          }}
+          slidesPerView={3}
           keyboard={true}
           modules={[Mousewheel, Keyboard]}
           className="mySwiper"
@@ -28,7 +39,11 @@ const Featured = forwardRef((props, ref) => {
           {/* Features products item */}
           {products.map((item, i) => (
             <SwiperSlide>
-              <ProductCard key={i} data={item} />
+              <ProductCard
+                key={item.id}
+                data={item}
+                setShowNotif={props.setShowNotif}
+              />
             </SwiperSlide>
           ))}
         </Swiper>

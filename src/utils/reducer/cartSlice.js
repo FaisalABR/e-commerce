@@ -10,7 +10,7 @@ const cartSlice = createSlice({
       reducer(state, action) {
         state.push(action.payload);
       },
-      prepare(name, productId, productAmount, price, color, size) {
+      prepare(name, productId, productAmount, price, color, size, imageUrl) {
         return {
           payload: {
             id: nanoid(),
@@ -20,6 +20,7 @@ const cartSlice = createSlice({
             price,
             color,
             size,
+            imageUrl,
             isChecked: false,
             isPaid: false,
           },

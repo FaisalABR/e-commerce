@@ -9,6 +9,35 @@ import "swiper/css/pagination";
 import { Navigation, Pagination, Mousewheel, Keyboard } from "swiper";
 
 const HeroSlide = () => {
+  const dataImage = [
+    {
+      id: 1,
+      imageUrl: "hero_slide/hero-slide-1.jpg",
+    },
+    {
+      id: 2,
+      imageUrl: "hero_slide/hero-slide-2.jpg",
+    },
+    {
+      id: 3,
+      imageUrl: "hero_slide/hero-slide-3.jpg",
+    },
+    {
+      id: 4,
+      imageUrl: "hero_slide/hero-slide-4.jpg",
+    },
+    {
+      id: 5,
+      imageUrl: "hero_slide/hero-slide-5.jpg",
+    },
+    {
+      id: 6,
+      imageUrl: "hero_slide/hero-slide-6.jpg",
+    },
+  ];
+
+  const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+
   return (
     <Swiper
       cssMode={true}
@@ -19,36 +48,15 @@ const HeroSlide = () => {
       modules={[Navigation, Pagination, Mousewheel, Keyboard]}
       className="mySwiper"
     >
-      <SwiperSlide>
-        <div className=" h-[80vh] lg:h-[80vh] md:h-[80vh] w-full bg-dark-grey flex items-center justify-center rounded-md text-white text-4xl ">
-          1
-        </div>
-      </SwiperSlide>
-      <SwiperSlide>
-        <div className="h-[80vh] w-full bg-dark-grey flex items-center justify-center rounded-md text-white text-4xl">
-          2
-        </div>
-      </SwiperSlide>
-      <SwiperSlide>
-        <div className="h-[80vh] w-full bg-dark-grey flex items-center justify-center rounded-md text-white text-4xl">
-          3
-        </div>
-      </SwiperSlide>
-      <SwiperSlide>
-        <div className="h-[80vh] w-full bg-dark-grey flex items-center justify-center rounded-md text-white text-4xl">
-          4
-        </div>
-      </SwiperSlide>
-      <SwiperSlide>
-        <div className="h-[80vh] w-full bg-dark-grey flex items-center justify-center rounded-md text-white text-4xl">
-          5
-        </div>
-      </SwiperSlide>
-      <SwiperSlide>
-        <div className="h-[80vh] w-full bg-dark-grey flex items-center justify-center rounded-md text-white text-4xl">
-          6
-        </div>
-      </SwiperSlide>
+      {dataImage.map((item) => (
+        <SwiperSlide>
+          <img
+            src={PF + item.imageUrl}
+            alt={item.imageUrl}
+            className=" h-[80vh] lg:h-[80vh] md:h-[80vh] w-full object-cover object-top  rounded-md text-white text-4xl "
+          />
+        </SwiperSlide>
+      ))}
     </Swiper>
   );
 };
